@@ -1,4 +1,4 @@
-package com.example.spending_tracker;
+package com.example.spending_tracker.sqlite;
 
 import java.text.AttributedString;
 
@@ -8,7 +8,7 @@ public class object {
     String time;
 
     object(){}
-    object(String place, float price, String time) {
+    public object(String place, float price, String time) {
         this.place = place;
         this.price = price;
         this.time = time;
