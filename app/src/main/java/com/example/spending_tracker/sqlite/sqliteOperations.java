@@ -57,8 +57,14 @@ public class sqliteOperations {
         return response;
     }
 
-    public void deleteData(object object) {
-        db.delete("object",
-                "place="+object.getPlace()+" and price="+object.getPrice()+" and time="+object.getTime(), null);
+    public String deleteData(object object) {
+        try {
+            String whereClause = "place='" + object.getPlace() + "' and price='" + object.getPrice() + "' and time='" + object.getTime() + "'";
+            db.delete("object", whereClause,
+                     null);
+            return "ok";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }

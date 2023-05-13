@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.spending_tracker.customspinner.CustomAdapter;
 import com.example.spending_tracker.customspinner.CustomItem;
@@ -50,6 +51,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         FloatingActionButton listbtn = findViewById(R.id.listbtn);
         ListView listView = findViewById(R.id.listView);
 
+
+
         listbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +65,22 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         listAlldata = sqlOperations.showAllData(null);
         listViewAdapter = new CustomListViewAdapter(MainActivity.this,listAlldata);
         listView.setAdapter(listViewAdapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String message = sqlOperations.deleteData(listViewAdapter.getItem(i));
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                CustomItem item = (CustomItem) customSpinner.getSelectedItem();
+                listAlldata = sqlOperations.showAllData("place = '"+
+                        item.getSpinnerItemName()+"'");
+                listViewAdapter = new CustomListViewAdapter(MainActivity.this,listAlldata);
+                listView.setAdapter(listViewAdapter);
+                return false;
+            }
+        });
+
+
 
         customSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
