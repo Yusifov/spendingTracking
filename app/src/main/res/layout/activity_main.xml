@@ -6,6 +6,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:background="@color/yellow"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -27,28 +28,66 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/price"
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="0.00"
-        android:ems="20"
-        android:inputType="numberDecimal" />
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_send"
-        android:layout_marginTop="30dp"
-        android:text="Send"
-        android:layout_gravity="center" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pricelabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/baseline_currency_lira_24"
+            android:minHeight="30dp"
+            android:gravity="center"
+            android:minWidth="100dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            app:backgroundTint="@color/orange"
+            app:elevation="6dp"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:tint="@color/white"
+            android:src="@drawable/baseline_currency_lira_24" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/listbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            app:backgroundTint="@color/orange"
+            app:elevation="6dp"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:tint="@color/white"
+            android:src="@drawable/ic_arrow_drop_down_circle_black_24dp" />
+
+    </LinearLayout>
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textStyle="bold|italic"
         android:layout_marginTop="50dp" />
 </LinearLayout>

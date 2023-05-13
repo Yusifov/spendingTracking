@@ -40,10 +40,10 @@ public class sqliteOperations {
         }
     }
 
-    public List<object> showAllData(String whereClause) {
+    public ArrayList<object> showAllData(String whereClause) {
         String colume[] = {"place", "price", "time"};
        // String whereClause = "column1 = ? OR column1 = ?";
-        List<object> response = new ArrayList<>();
+        ArrayList<object> response = new ArrayList<>();
         Cursor cursor = db.query("object", colume, whereClause, null,
                 null, null,     null);
         cursor.moveToFirst();
